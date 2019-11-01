@@ -12,6 +12,7 @@ Wormen zijn een informele groep van dieren die meer dan 25.000 soorten telt. Bek
 !next
 De naam 'worm' wordt gebruikt voor een aantal ongewervelde dieren met een enigszins gelijkend uiterlijk, maar sterk afwijkende afstamming en/of ontwikkeling. Wormen zijn een informele (parafyletische) groep, het is geen echte groep maar meer een verzameling van diverse groepjes uit verschillende andere diergroepen. De platwormen bijvoorbeeld behoren tot de Platyzoa, waar ook de sterk afwijkende raderdiertjes toe behoren.
 !opt; Je hebt maar 1 keuze! Moehahaha!; 3
+!logbook; Je hebt het stuk over wormen gelezen. Je vond het erg interessant.
 
 !section; 2
 Nou dat vind ik echt niet aardig van je. Dan bied ik het aan en maak je er geen gebruik van... Wat een onbeschoftheid! De jeugd van tegenwoordig. Grmbl!

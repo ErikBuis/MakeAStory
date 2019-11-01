@@ -5,7 +5,7 @@
 
 package DesignALanguage;
 
-public class SyntaxNotFoundException extends Exception {
+public class SyntaxNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     SyntaxNotFoundException(String message) {

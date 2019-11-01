@@ -3,6 +3,7 @@
  * -
  */
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ import WriteAStory.*;
 public class RunAStoryTerminal {
     private static final Scanner scanTerminal = new Scanner(System.in);
     /* Compile the story and store it in a story instance. */
-    private static final Story story = CompileAStory.compileFullStory();
+    private static final Story story = CompileAStory.compileFullStory(inputStoryName(scanTerminal));
     /* This ArrayList contains all sections that the user read so far, so that optifread and optifnotread can check if
      * the user actually read a paragraph. It is also useful when the user reads a section containing a logbookPart,
      * because it would be automatically added to this ArrayList.
@@ -20,6 +21,13 @@ public class RunAStoryTerminal {
     private static ArrayList<Marking> sectionsRead = new ArrayList<Marking>();
 
     public static void main(String[] args) {
+        System.out.println("\nHave fun reading!!!\n\n\n\n");
+        String stripes = "-".repeat((80 - story.getTitle().length()) / 2);
+        System.out.println(stripes + story.getTitle().toUpperCase() + stripes + "\n");
+        System.out.println("Author: " + story.getAuthor());
+        System.out.println("Programmer: Erik Buis");
+        System.out.println("\n");
+
         /* Start running the first section. Then run the section at the marking returned. */
         Marking running = story.getStartingPosition();
 
@@ -32,21 +40,49 @@ public class RunAStoryTerminal {
              */
             printParagraphs(currentSection, running.getParagraphIndex());
 
-            /* Add the current position to the ArrayList containing all markings of sections read by the user so far. */
-            sectionsRead.add(running);
+            /* Add the current position to the ArrayList containing all markings of sections read by the user so far. If
+             * the section has already been read before, it shouldn't be added, because duplicate markings could cause
+             * user commands to be not working (such as "/logbook" printing a logbookPart multiple times).
+             */
+            if (!hasUserRead(running))
+                sectionsRead.add(running);
 
             /* Let the user choose one of the options, so that he can be redirected to another point in the story. */
             Option[] availableOptions = getAvailableOptions(currentSection);
             running = letUserChooseOption(availableOptions);
 
+            System.out.println("\n");
         /* Check if the new marking points to the end of the story (the chapter name is then equal to null). */
         } while (running.getChapterName() != null);
 
-        System.out.println("THE END\n\n\n\n");
+        System.out.println("THE END");
         scanTerminal.nextLine();
-        System.out.println("CREDITS:\n");
+        System.out.println("\n\n\n---------------------CREDITS---------------------\n");
         System.out.println("Author: " + story.getAuthor());
         System.out.println("Programmer: Erik Buis");
+        scanTerminal.nextLine();
+        System.out.println("\n\n\n");
+        System.out.println("THANKS FOR READING!");
+    }
+
+    private static File inputStoryName(Scanner scanTerminal) {
+        System.out.println("Welcome to the run program of Write A Story!");
+
+        do {
+            System.out.println("\nPlease pick the story you want to compile and/or read. This has to be an existing"
+            + " directory in SavedStories.");
+            executeReaderCommand("/stories", false);
+
+            /* Get file object of directory. */
+            File storyDir = new File("SavedStories", scanTerminal.nextLine());
+
+            /* Check if the given directory exists. */
+            if (storyDir.exists() && storyDir.isDirectory()) {
+                return storyDir;
+            } else {
+                System.out.println("The given directory does not exist.");
+            }
+        } while (true);
     }
 
     /* This method prints all the paragraphs in in the current section. It also calls the method readUserInput
@@ -61,35 +97,61 @@ public class RunAStoryTerminal {
             /* There is a next between each paragraph, which means that the reader must click enter if he wants to
              * proceed and read the next paragraph. It is possible to type in commands if the reader wants to.
              */
-            readUserInput();
+            if (currentSection.getParagraphAmount() - 1 != i)
+                executeReaderCommand(scanTerminal.nextLine(), true);
         }
     }
 
-    private static void readUserInput() {
-        switch (scanTerminal.nextLine()) {
-            case "help":
+    private static void executeReaderCommand(String input, boolean askInputAgainIfCommandWasEntered) {
+        /* The following statement is a switch-case statement, because it will be easier to add new input options later
+         * when it is needed. A / (forward slash) is used for each special option, because it will never be able to
+         * interfere with any possible directory name.
+         */
+        switch (input) {
+            case "/help":
                 /* If the user typed "help", then all available commands in this switch-case-statement must be
                  * shown to him (including a short explanation).
                  */
                 System.out.println("Available commands:");
-                System.out.println("help:    Displays this text.");
-                System.out.println("logbook: Displays the logbook text accumulated so far.");
+                System.out.println("/help:    Displays this text.");
+                System.out.println("/logbook: Displays the logbook entries accumulated so far.");
+                System.out.println("/stories: Displays all stories which are available to read.");
                 break;
-            case "logbook":
+            case "/logbook":
+                boolean isEmpty = true;
+
                 /* If the user typed "logbook", then the current logbook must be shown to him. */
                 for (Marking sectionRead : sectionsRead) {
                     /* Print all logbook parts accumulated so far. */
-                    story.getChapter(sectionRead.getChapterName()).getSection(sectionRead.getSectionIndex())
-                    .getLogbookPart().printLines();
-                    System.out.println();
+                    if (!story.getChapter(sectionRead.getChapterName()).getSection(sectionRead.getSectionIndex())
+                    .getLogbookPart().printLines())
+                        isEmpty = false;
                 }
+
+                if (isEmpty)
+                    System.out.println("There are currently no entries in the logbook. Please come back later.");
+
+                break;
+            case "/stories":
+                /* This loop iterates over all files in the SavedStories dir and prints their names. */
+                System.out.println("Story directories in SavedStories:");
+
+                for (File file : new File("SavedStories").listFiles()) {
+                    if (file.isDirectory())
+                        System.out.println("- " + file.getName());
+                }
+
                 break;
             default:
-                return;
+                askInputAgainIfCommandWasEntered = false;
+                break;
         }
 
-        /* Ask for input again, because the user didn't click enter yet. */
-        readUserInput();
+        /* Ask for input again, because he might want to enter a command again. */
+        if (askInputAgainIfCommandWasEntered) {
+            System.out.println("\nEnter another command or press enter to stop entering commands.");
+            executeReaderCommand(scanTerminal.nextLine(), true);
+        }
     }
 
     private static Option[] getAvailableOptions(Section currentSection) {
@@ -98,33 +160,13 @@ public class RunAStoryTerminal {
         for (int i = 0; i < currentSection.getOptionAmount(); i++) {
             Option option = currentSection.getOption(i);
 
-            /* Add the option if it has been read and is an instance of OptionIfRead or it has not been read and is an
-             * instance of OptionIfNotRead.
-             */
             if (option instanceof OptionIfRead) {
-                Marking ifRead = ((OptionIfRead) option).getIfRead();
-
-                for (Marking sectionRead : sectionsRead) {
-                    /* If the section has been read, add it to the available options. */
-                    if (ifRead.equals(sectionRead)) {
-                        availableOptions.add(option);
-                        break;
-                    }
-                }
+                /* Add the option if the section has been read before. */
+                if (hasUserRead(((OptionIfRead) option).getIfRead()))
+                    availableOptions.add(option);
             } else if (option instanceof OptionIfNotRead) {
-                Marking ifNotRead = ((OptionIfNotRead) option).getIfNotRead();
-                boolean isRead = false;
-
-                for (Marking sectionRead : sectionsRead) {
-                    /* If the section has been read, mark it as read and jump out of the loop. */
-                    if (ifNotRead.equals(sectionRead)) {
-                        isRead = true;
-                        break;
-                    }
-                }
-
                 /* Add the option if the section hasn't been read before. */
-                if (!isRead)
+                if (!hasUserRead(((OptionIfNotRead) option).getIfNotRead()))
                     availableOptions.add(option);
             } else {
                 availableOptions.add(option);
@@ -132,6 +174,16 @@ public class RunAStoryTerminal {
         }
 
         return availableOptions.toArray(new Option[0]);
+    }
+
+    private static boolean hasUserRead(Marking checkIfRead) {
+        for (Marking sectionRead : sectionsRead) {
+            /* If the section has been read, mark it as read and jump out of the loop. */
+            if (checkIfRead.equals(sectionRead))
+                return true;
+        }
+
+        return false;
     }
 
     /* This method shows the user all available options and asks for his preferred choice. When the user has chosen an
@@ -164,7 +216,7 @@ public class RunAStoryTerminal {
             /* Get the difference between the reference and the current string to match with using the Levenshtein
              * algorithm.
              */
-            differences[i] = getDifferenceLevenshtein(reference, possibleMatches[i]);
+            differences[i] = getDifferenceLevenshtein(reference.toLowerCase(), possibleMatches[i].toLowerCase());
         }
 
         /* Return the index of the string that was the least different from the reference. */
@@ -185,7 +237,7 @@ public class RunAStoryTerminal {
                     dp[i][j] = i;
                 } else {
                     dp[i][j] = Math.min(Math.min(
-                    dp[i - 1][j - 1] + x.charAt(i - 1) == y.charAt(j - 1) ? 0 : 1,
+                    dp[i - 1][j - 1] + (x.charAt(i - 1) == y.charAt(j - 1) ? 0 : 1),
                     dp[i - 1][j] + 1),
                     dp[i][j - 1] + 1);
                 }

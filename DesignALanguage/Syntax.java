@@ -50,6 +50,6 @@ public final class Syntax {
             builder.append(this.variables[i] + "; ");
         }
 
-        return builder.append(this.variables[this.variables.length - 1]).append('\n').toString();
+        return builder.append(this.variables[this.variables.length - 1]).toString();
     }
 }

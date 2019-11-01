@@ -48,7 +48,7 @@ public final class Section {
 
     /* This method adds a line to the last paragraph added to this section. */
     public void addLineToLastParagraph(String line) {
-        this.paragraphs.get(this.paragraphs.size()).addLine(line);
+        this.paragraphs.get(this.paragraphs.size() - 1).addLine(line);
     }
 
 
@@ -66,7 +66,7 @@ public final class Section {
     public void addOption(Option option) {
         this.options.add(option);
     }
-    
+
 
     /* This method returns the logbookPart of this section for concatenation of all logbook parts. */
     public Paragraph getLogbookPart() {

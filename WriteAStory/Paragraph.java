@@ -14,10 +14,12 @@ public final class Paragraph {
         this.lines = new ArrayList<String>();
     }
 
-    public void printLines() {
+    public boolean printLines() {
         for (String line : lines) {
             System.out.println(line);
         }
+
+        return lines.isEmpty();
     }
 
     public void addLine(String line) {

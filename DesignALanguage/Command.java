@@ -5,17 +5,20 @@
 
 package DesignALanguage;
 
+import java.util.Arrays;
+
 public abstract class Command {
     public abstract String getName();
     public abstract Syntax[] getSyntaxes();
 
-    public final Syntax getValidSyntax(String[] args) throws SyntaxNotFoundException {
+    public final Syntax getValidSyntax(String[] args) {
         for (Syntax syntax : getSyntaxes()) {
             if (syntax.isValid(args))
                 return syntax;
         }
 
-        throw new SyntaxNotFoundException("None of the possible syntaxes matched with the command given. " + this);
+        throw new SyntaxNotFoundException("None of the possible syntaxes matched with the command given. " + this
+        + "Given arguments: " + Arrays.toString(args));
     }
 
     @Override

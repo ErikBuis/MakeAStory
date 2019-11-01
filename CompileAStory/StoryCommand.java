@@ -48,17 +48,18 @@ public abstract class StoryCommand extends Command {
         /* The pointer always contains a section index, so this doesn't have to be checked. */
         sectionIndex = Integer.parseInt(args[chapterIsGiven ? 1 : 0]);
 
-        /* Check if the given section index exists in the chapter given by chapterName. */
-        if (story.getChapter(chapterName).getSectionAmount() <= sectionIndex)
-            throw new StoryCompileException("An undefined section index was given.");
+        // TODO Vraag Tijmen wat ik moet doen in het geval dat een section nog niet geladen is. Ik wilde eerst een exception laten genereren, maar dit kan niet omdat deze nog niet geladen is op het moment dat een option ernaar verwijst.
+        // /* Check if the given section index exists in the chapter given by chapterName. */
+        // if (story.getChapter(chapterName).getSectionAmount() <= sectionIndex)
+        //     throw new StoryCompileException("An undefined section index was given.");
 
         /* Check if the pointer contains a paragraph index. */
-        if (args[chapterIsGiven ? 2 : 1] != null) {
+        if (args.length > (chapterIsGiven ? 2 : 1)) {
             paragraphIndex = Integer.parseInt(args[chapterIsGiven ? 2 : 1]);
 
-            /* Check if the given paragraph index exists in the chapter given by chapterName. */
-            if (story.getChapter(chapterName).getSection(sectionIndex).getParagraphAmount() <= paragraphIndex)
-                throw new StoryCompileException("An undefined paragraph index was given.");
+            // /* Check if the given paragraph index exists in the chapter given by chapterName. */
+            // if (story.getChapter(chapterName).getSection(sectionIndex).getParagraphAmount() <= paragraphIndex)
+            //     throw new StoryCompileException("An undefined paragraph index was given.");
         }
 
         /* If the computer got here, no exceptions have been thrown. The marking can be safely returned. */
@@ -80,7 +81,7 @@ final class SCsection extends StoryCommand {
     public Syntax[] getSyntaxes() {
         return new Syntax[] {
             new Syntax(
-                new Variable(Variable.Type.INTEGER, "int sectionIndex")
+                new Variable(Variable.Type.INTEGER, "sectionIndex")
             )
         };
     }
@@ -113,7 +114,9 @@ final class SCnext extends StoryCommand {
 
     @Override
     public Syntax[] getSyntaxes() {
-        return new Syntax[] {};
+        return new Syntax[] {
+            new Syntax()
+        };
     }
 
     @Override
@@ -171,7 +174,7 @@ final class SCopt extends StoryCommand {
     public void compile(Syntax syntax, String[] args, Story story, String currentChapterName) {
         /* Add a new option containing the compiled marking to the current section. */
         story.getChapter(currentChapterName).getLastSection().addOption(
-            new Option(args[0], super.getMarking(Arrays.copyOfRange(args, 1, args.length - 1),story,currentChapterName))
+            new Option(args[0], super.getMarking(Arrays.copyOfRange(args, 1, args.length), story, currentChapterName))
         );
     }
 }
@@ -229,7 +232,7 @@ final class SCoptifread extends StoryCommand {
                 new OptionIfRead(
                     super.getMarking(new String[] {args[0]}, story, currentChapterName),
                     args[1],
-                    super.getMarking(Arrays.copyOfRange(args, 2, args.length - 1), story, currentChapterName)
+                    super.getMarking(Arrays.copyOfRange(args, 2, args.length), story, currentChapterName)
                 )
             );
         /* If the first argument is not named "sectionIndex", it must be "chapterName", and the next argument must be
@@ -239,9 +242,9 @@ final class SCoptifread extends StoryCommand {
         } else {
             story.getChapter(currentChapterName).getLastSection().addOption(
                 new OptionIfRead(
-                    super.getMarking(Arrays.copyOfRange(args, 0, 1), story, currentChapterName),
+                    super.getMarking(Arrays.copyOfRange(args, 0, 2), story, currentChapterName),
                     args[2],
-                    super.getMarking(Arrays.copyOfRange(args, 3, args.length - 1), story, currentChapterName)
+                    super.getMarking(Arrays.copyOfRange(args, 3, args.length), story, currentChapterName)
                 )
             );
         }
@@ -275,7 +278,7 @@ final class SCoptifnotread extends StoryCommand {
                 new OptionIfNotRead(
                     super.getMarking(new String[] {args[0]}, story, currentChapterName),
                     args[1],
-                    super.getMarking(Arrays.copyOfRange(args, 2, args.length - 1), story, currentChapterName)
+                    super.getMarking(Arrays.copyOfRange(args, 2, args.length), story, currentChapterName)
                 )
             );
         /* If the first argument is not named "sectionIndex", it must be "chapterName", and the next argument must be
@@ -285,9 +288,9 @@ final class SCoptifnotread extends StoryCommand {
         } else {
             story.getChapter(currentChapterName).getLastSection().addOption(
                 new OptionIfNotRead(
-                    super.getMarking(Arrays.copyOfRange(args, 0, 1), story, currentChapterName),
+                    super.getMarking(Arrays.copyOfRange(args, 0, 2), story, currentChapterName),
                     args[2],
-                    super.getMarking(Arrays.copyOfRange(args, 3, args.length - 1), story, currentChapterName)
+                    super.getMarking(Arrays.copyOfRange(args, 3, args.length), story, currentChapterName)
                 )
             );
         }

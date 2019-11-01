@@ -25,10 +25,7 @@ public final class CompileAStory {
      * contains all data that is needed to run the full program and read the whole story. All chapters out of all given
      * files will be read.
      */
-    public static Story compileFullStory() {
-        /* Get an input directory. */
-        File inputDir = inputStoryName();
-
+    public static Story compileFullStory(File inputDir) {
         /* Read the properties of the given story contained in the main.properties file. */
         Properties prop = readStoryProperties(inputDir);
 
@@ -51,50 +48,6 @@ public final class CompileAStory {
         return story;
     }
 
-    private static File inputStoryName() {
-        Scanner scanTerminal = new Scanner(System.in);
-        System.out.println("Welcome to the compilation program of Write A Story!");
-
-        do {
-            System.out.println("\nPlease pick the story you want to compile and/or read. This has to be an existing"
-            + " directory in SavedStories. Type \"/all\" to see all available stories.");
-
-            String input = scanTerminal.nextLine();
-
-            /* The following statement is a switch-case statement, because it will be easier to add new input options
-            * later when it is needed. A / (forward slash) is used for each special option, because it will never be
-            * able to interfere with any possible directory name.
-            */
-            switch (input) {
-                case "/all":
-                    printAvailableStories();
-                    break;
-                default:
-                    /* Get file object of directory. */
-                    File storyDir = new File("SavedStories", input);
-
-                    /* Check if the given directory exists. */
-                    if (storyDir.exists() && storyDir.isDirectory()) {
-                        scanTerminal.close();
-                        return storyDir;
-                    } else {
-                        System.out.println("The given directory does not exist.");
-                    }
-
-                    break;
-            }
-        } while (true);
-    }
-
-    /* This method iterates over all files in the SavedStories dir and prints the names of the dirs in there. */
-    private static void printAvailableStories() {
-        for (File file : new File("SavedStories").listFiles()) {
-            if (file.isDirectory()) {
-                System.out.println(file.getName());
-            }
-        }
-    }
-
     /* This method reads all properties out of the main.properties file and returns an instance of Properties. */
     private static Properties readStoryProperties(File inputDir) {
         Properties prop = new Properties();
@@ -102,9 +55,9 @@ public final class CompileAStory {
         try {
             prop.load(new FileInputStream(new File(inputDir, "main.properties")));
         } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException("This story directory doesn't contain a main.properties file.");
+            throw new IllegalArgumentException("This story directory doesn't contain a main.properties file (?).");
         } catch (IOException e) {
-            throw new IllegalArgumentException("The input of the main.properties file is not valid.");
+            throw new IllegalArgumentException("The input of the main.properties file is not valid (?).");
         }
 
         return prop;
@@ -136,7 +89,7 @@ public final class CompileAStory {
             scanChapter = new Scanner(chapterFile);
         } catch(FileNotFoundException e) {
             throw new StoryCompileException(String.format("The chapter \"%s\" listed in main.properties doesn't exist"
-            + " or doesn't have a \".txt\" extension.", currentChapterName));
+            + " or doesn't have a \".txt\" extension.", currentChapterName), e);
         }
 
         /* Initiate a variable that contains the current line number being read, so that it can be used in the exception
@@ -147,17 +100,20 @@ public final class CompileAStory {
 
         while (scanChapter.hasNextLine()) {
             lineNr++;
+            String line = scanChapter.nextLine();
+
+            if (line.isEmpty())
+                continue;
 
             /* Catch a possible StoryCompileException, so that the file and line number from where the exception was
              * thrown are added to the exception message. This is useful for the author, because he can debug his story
              * without much searching work.
              */
             try {
-                processLine(story, currentChapterName, scanChapter.nextLine());
-            } catch (StoryCompileException e) {
+                processLine(story, currentChapterName, line);
+            } catch (Exception e) {
                 scanChapter.close();
-                throw new StoryCompileException(String.format("%s, line %d: %s", chapterFile.getName(), lineNr,
-                e.getMessage()));
+                throw new StoryCompileException(String.format("Exception occurred in file \"%s\", line %d.", chapterFile.getName(), lineNr), e);
             }
         }
 
@@ -176,18 +132,13 @@ public final class CompileAStory {
             String[] splitLine = line.split("\\s*;\\s*");
             /* Use the command and args parts of the split string seperately. */
             StoryCommand command = getCommandByName(splitLine[0]);
-            String[] args = Arrays.copyOfRange(splitLine, 1, splitLine.length - 1);
-
+            String[] args = Arrays.copyOfRange(splitLine, 1, splitLine.length);
             /* Process the command argument of the line. The explanation about each command is given above the class in
              * the file StoryCommand.java that is processing that particular command. First, a valid syntax must be found. If none exists, a StoryCompileException must be thrown.
              */
             Syntax validSyntax;
 
-            try {
-                validSyntax = command.getValidSyntax(args);
-            } catch (SyntaxNotFoundException e) {
-                throw new StoryCompileException(e.getMessage());
-            }
+            validSyntax = command.getValidSyntax(args);
 
             /* Finally, compile the command that the author wants to execute. */
             command.compile(validSyntax, args, story, currentChapterName);
@@ -219,11 +170,11 @@ public final class CompileAStory {
     /* This method returns the command that has the name given to this method. */
     private static StoryCommand getCommandByName(String name) {
         for (StoryCommand storyCommand : storyCommands) {
-            if (storyCommand.getName() == name) {
+            if (storyCommand.getName().equals(name))
                 return storyCommand;
-            }
         }
 
-        throw new StoryCompileException("The name of the command given on this line doesn't exist.");
+        throw new StoryCompileException(String.format("The name of the command given on this line (%s) doesn't exist.",
+        name));
     }
 }
