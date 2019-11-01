@@ -1,0 +1,36 @@
+!section; 0
+Dit is een verhaal dat eigenlijk nergens op slaat. Dit bericht is heel willekeurig en irrelevant. Waarom lees je het nog? Je kan toch wel veel meer leuke of nuttige dingen met je tijd doen. Eigenlijk weet ik ook niet waarom ik dit allemaal in aan het typen en. Dat zorgt er alleen maar voor dat ik meer tijd besteed aan een opdracht die ik toch al af heb. In ieder geval, geniet nu nog maar even van het komende stuk over wormen. Het is natuurlijk enorm interessant en je hebt er erg veel aan voor de rest van je carriëre!
+!next
+Heee, kijk nou eens. Ik heb ook nog eens een e met dubbele puntjes gegenereerd. Dat hoorde niet eens bij de opdracht! Wat ben ik toch een goede student.
+
+Wil je een stuk over wormen lezen?
+!opt; Ja!; 1
+!opt; Neehee...; 2
+
+!section; 1
+Wormen zijn een informele groep van dieren die meer dan 25.000 soorten telt. Bekende stammen van wormen zijn de ringwormen (Annelida), de platwormen (Platyhelminthes) en de snoerwormen (Nemertea).
+!next
+De naam 'worm' wordt gebruikt voor een aantal ongewervelde dieren met een enigszins gelijkend uiterlijk, maar sterk afwijkende afstamming en/of ontwikkeling. Wormen zijn een informele (parafyletische) groep, het is geen echte groep maar meer een verzameling van diverse groepjes uit verschillende andere diergroepen. De platwormen bijvoorbeeld behoren tot de Platyzoa, waar ook de sterk afwijkende raderdiertjes toe behoren.
+!opt; Je hebt maar 1 keuze! Moehahaha!; 3
+
+!section; 2
+Nou dat vind ik echt niet aardig van je. Dan bied ik het aan en maak je er geen gebruik van... Wat een onbeschoftheid! De jeugd van tegenwoordig. Grmbl!
+!author; Dit is een comment van de auteur. Hij zal volledig genegeerd worden door de computer. Wel kan je hier nuttige info voor jezelf in zetten, bijvoorbeeld dat het mogelijk is om een optie zonder tekst te maken (hieronder te zien):
+!opt;; 3
+
+!section; 3
+Hier is dan section 3. Er staat bijna niks in.
+!next
+Wil je het stuk over waar de naam 'worm' voor wordt gebruikt opnieuw lezen?
+!opt; Ja!; 4
+!author; Op de volgende regel zie je dat het ook mogelijk is om naar een paragraaf van een section te springen, bijvoorbeeld naar de plek na het eerste !next commando. Wonderbaarlijk! (Als je naar het begin van de section wil gaan kan je 0 als tweede argument geven, maar dit is vrij nutteloos, omdat je ook gewoon alleen het sectionnummer kan doorgeven.)
+!opt; NEEEEEEEE!!!; 1; 1
+
+!section; 4
+Bedankt voor het vrijwillig toegegeven aan je onvoorkombare lot; je bent nu verlost...
+!author; Heeeee, zag je dat???? Ik kon zomaar een puntkomma in mijn verhaal zetten! Dit is inderdaad mogelijk, maar alleen als de regel met de puntkomma geen commando bevat (zoals deze regel, daarom schrijf ik het woord "puntkomma" nu steeds uit).
+!next
+!author; Met het commando !optifread (option if read) wordt de optie alleen toegevoegd wanneer de user de gespecificeerde section (het nummer in het eerste argument) heeft gelezen. !optifnotread doet het tegenovergestelde.
+...Als je tenminste het stuk over wormen hebt gelezen! GOTCHA!
+!optifread; 1; Wordt NU verlost!; Einde; 0
+!optifnotread; 1; MOEHAHAHA JE MOET TERUGKEREN; 1
