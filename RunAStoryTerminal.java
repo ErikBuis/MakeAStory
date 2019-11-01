@@ -102,7 +102,7 @@ public class RunAStoryTerminal {
         }
     }
 
-    private static void executeReaderCommand(String input, boolean askInputAgainIfCommandWasEntered) {
+    private static void executeReaderCommand(String input, boolean askInputAgain) {
         /* The following statement is a switch-case statement, because it will be easier to add new input options later
          * when it is needed. A / (forward slash) is used for each special option, because it will never be able to
          * interfere with any possible directory name.
@@ -143,12 +143,12 @@ public class RunAStoryTerminal {
 
                 break;
             default:
-                askInputAgainIfCommandWasEntered = false;
+                askInputAgain = false;
                 break;
         }
 
         /* Ask for input again, because he might want to enter a command again. */
-        if (askInputAgainIfCommandWasEntered) {
+        if (askInputAgain) {
             System.out.println("\nEnter another command or press enter to stop entering commands.");
             executeReaderCommand(scanTerminal.nextLine(), true);
         }
