@@ -55,9 +55,9 @@ public final class CompileAStory {
         try {
             prop.load(new FileInputStream(new File(inputDir, "main.properties")));
         } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException("This story directory doesn't contain a main.properties file (?).");
+            throw new IllegalArgumentException("This story directory doesn't contain a main.properties file.");
         } catch (IOException e) {
-            throw new IllegalArgumentException("The input of the main.properties file is not valid (?).");
+            throw new IllegalArgumentException("The input of the main.properties file is not valid.");
         }
 
         return prop;

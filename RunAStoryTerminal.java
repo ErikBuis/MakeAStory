@@ -73,11 +73,13 @@ public class RunAStoryTerminal {
             + " directory in SavedStories.");
             executeReaderCommand("/stories", false);
 
+            String input = scanTerminal.nextLine();
+
             /* Get file object of directory. */
-            File storyDir = new File("SavedStories", scanTerminal.nextLine());
+            File storyDir = new File("SavedStories", input);
 
             /* Check if the given directory exists. */
-            if (storyDir.exists() && storyDir.isDirectory()) {
+            if (storyDir.exists() && storyDir.isDirectory() && input != "" && input != "." && input != "..") {
                 return storyDir;
             } else {
                 System.out.println("The given directory does not exist.");
