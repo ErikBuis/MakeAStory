@@ -51,7 +51,7 @@ public class RunAStoryTerminal {
             Option[] availableOptions = getAvailableOptions(currentSection);
             running = letUserChooseOption(availableOptions);
 
-            System.out.println("\n");
+            System.out.println();
         /* Check if the new marking points to the end of the story (the chapter name is then equal to null). */
         } while (running.getChapterName() != null);
 
