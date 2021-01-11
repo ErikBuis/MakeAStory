@@ -1,7 +1,8 @@
-/*
-* CompileAStory.java:
-* -
-*/
+/* Written by Erik Buis
+ *
+ * CompileAStory.java:
+ * -
+ */
 
 package CompileAStory;
 
@@ -30,7 +31,7 @@ public final class CompileAStory {
         Properties prop = readStoryProperties(inputDir);
 
         /* Get an ordered array with strings of the names of chapters that must be read. */
-        String[] chapterNames = prop.getProperty("chapters").split(",");
+        String[] chapterNames = prop.getProperty("chapters").trim().split("\\s*,\\s*");
 
         /* Initiate the story. If one or more of the properties aren't found, a StoryCompileException will be thrown. */
         Story story = initStory(prop, chapterNames[0]);

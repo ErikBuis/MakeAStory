@@ -1,4 +1,5 @@
-/*
+/* Written by Erik Buis
+ *
  * Chapter.java:
  * -
  */

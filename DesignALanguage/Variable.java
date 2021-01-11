@@ -1,4 +1,5 @@
-/*
+/* Written by Erik Buis
+ *
  * Variable.java:
  * -
  */
@@ -33,7 +34,7 @@ public final class Variable {
                 /* The following default block can never be executed (because all Types are covered), but it must be
                  * added, because otherwise I would get a VSCode error (saying that this method must return a boolean).
                  */
-                throw new IllegalArgumentException("The programmer made a mistake. Please contact him to solve this"
+                throw new IllegalArgumentException("The developer made a mistake. Please contact him to solve this"
                 + " problem.");
         }
     }
