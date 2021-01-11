@@ -4,19 +4,23 @@ MakeAStory is a Java-based program to run text-based interactive stories. Storie
 ## Compilation
 Compile the program by using:
 ```bash
-javac /Path/To/MakeAStory/*/*.java
+cd Path/To/MakeAStory
+find . -name "*.java" -print | xargs javac
 ```
 Compilation is necessary only once, because new stories will be automatically detected and compiled at runtime.
 
-## Usage
-You can use this program as a reader or an author. To use this program as a reader, run:
+## Read a story
+After having compiled the program, you can start reading stories made in the SavedStories directory. To use this program as a reader, run:
 ```bash
 java /Path/To/MakeAStory/RunAStoryTerminal
 ```
-To use this program as an author, refer to [Write a story](#write-a-story).
+When no options are shown, this indicates the end of the current paragraph. By pressing the enter/return key, you are shown the next one.
+
+If you misspelled the name of an option at the end of a section: don't worry, because the closest available option will automatically be selected.
+
 
 ## Write a story
-A story is made up of one or more chapters, each of which contain sections which can be separated into paragraphs. Each time the reader presses the enter/return key, they are shown a new paragraph. At the end of each section, the author must specify at least one option for the reader to choose and jump to. This jump can point to another section in the same chapter, the first (default) or a specific section in another chapter or the end of the story. For each section, the author is also able to specify a certain paragraph within it.
+A story is made up of one or more chapters, each of which contain sections which can be separated into paragraphs. At the end of each section, the author must specify at least one option for the reader to choose and jump to. This jump can point to another section in the same chapter, the first (default) or a specific section in another chapter or the end of the story. For each section, the author is also able to specify a certain paragraph within it.
 
 ### Setup
 Write your own story by inserting your own directory into the SavedStories directory. Your directory must contain a `main.properties` file and a text file for each chapter in the story. The `main.properties` file must contain the following data:
