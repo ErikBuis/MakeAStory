@@ -1,0 +1,17 @@
+!section; 0
+---Disclaimer: De personages gebruikt in dit verhaal zijn fictief en de uitspraken zijn niet echt.
+
+
+Welkom bij de rondleiding van de onderzoeksgroep Computer Vision, ik ben vandaag uw gids. In deze onderzoeksgroep wordt gewerkt aan verschillende projecten. Vandaag kunt u rondkijken bij de volgende projecten waar de stafleden aan werken: Flexcraft, TrimBot2020 en Gravitate. Welke zou u als eerst willen bezoeken?
+!opt; Flexcraft; flexcraft
+!opt; TrimBot; trimbot
+!opt; Gravitate; gravitate
+!opt; Beëindig de rondleiding; visie
+
+!section; 1
+"Dat was interessant! Welk project zal ik nu bezoeken?"
+!optifnotread; Flexcraft; flexcraft
+!optifnotread; TrimBot; trimbot
+!optifnotread; Gravitate; gravitate
+!optifnotread; Beëindig de rondleiding; visie
+
