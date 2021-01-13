@@ -3,33 +3,32 @@ Optie gekozen: Flexcraft door prof Theo Gevers en Rick Groenendijk
 
 Je loopt de kamer van flexcraft in en je ziet twee mensen staan die aan het praten zijn over het onderzoek waar ze mee bezig zijn.
 Gids: “Dit zijn Theo Gevers en Rick Groenendijk, ze doen onderzoek voor het project Flexcraft. Misschien kun je ze wat vragen om hier meer over te weten te komen.”
-!optifnotread; Stel vragen aan Rick Groenendijk; 1
-!optifnotread; Stel vragen aan Theo Gevers; 2
+!optifnotread; 1; Stel vragen aan Rick Groenendijk; 1
+!optifnotread; 2; Stel vragen aan Theo Gevers; 2
 !opt; Verlaat de kamer; welcome; 1
 
 !section; 1
-Jij: “Goedemiddag, als u tijd heeft, kunt u me wat vertellen over het Flexcraft project en jullie rol hierin?”  
+Jij: “Goedemiddag, als u tijd heeft, kunt u me wat vertellen over het Flexcraft project en jullie rol hierin?”
 Rick: “Jazeker, onderzoekers zijn vaak enthousiast over hun bezigheden, ik inbegrepen. Flexcraft is een groot onderzoek waar verschillende Nederlandse universiteiten en bedrijven aan deelnemen, dit zijn universiteiten in Wageningen, Eindhoven, Twente, Delft en uiteraard de universiteit van Amsterdam. Het is een project met een focus op robotica in de voedselindustrie. Praktische toepassingen zijn bijvoorbeeld robots die in broeikassen automatisch planten voorzien van water en onderhoud of robots die voedsel verpakken. Dit soort toepassingen zijn verdeeld over zeven projecten, waarvan de eerste vier meer algemene onderzoeken zijn, en de laatste drie juist meer praktische toepassingen zijn van de eerste vier. Aan de UvA nemen wij deel aan een project die wij ‘project 1’ noemen, en daarnaast doen we nog mee aan drie van de praktische projecten.”
 !next
 Jij: “Hoe wordt computer vision hier specifiek toegepast en waarom is het nuttig?”
 Rick: “De reden dat computer vision moet worden toegepast en nuttig is, is dat we cognitieve robotica toepassen, wat inhoudt dat de robots in verschillende situaties kunnen worden ingezet en kunnen blijven werken met variaties in de verschillende omgevingen. Denk aan verschillende groottes van producten in voedselverpakkingen; hierbij moet de klauw van een robotarm met image processing kunnen detecteren hoe een nieuw product moet worden vastgegrepen. Met sensoren kunnen producten vanuit verschillende kijkhoeken nog steeds worden gedetecteerd.”
 !next
 Jij: “Dus door meer veelzijdige robots te kunnen ontwerpen met Computer Vision hoeven er minder gespecialiseerde robots te worden ontworpen?”
-Rick “Yes, exact.”
+Rick: “Yes, exact.”
 !next
 Jij: “Dankuwel voor de introductie.”
 Rick: “Graag gedaan, als je nog niet met Theo hebt gepraat dan kan hij je nog specifiek wat meer vertellen over het project waar de UvA aan meedoet.”
-!optifnotread; Praat met Theo Gevers; 2
+!optifnotread; 2; Praat met Theo Gevers; 2
 !opt; Verlaat de kamer; welcome; 1
 
 !section; 2
-“Goedemiddag, zou u mij kunnen vertellen waarmee u zich op dit moment bezig houdt binnen het project?”. Theo antwoord: “Maar natuurlijk, ik ben op dit moment werkzaam bij project 1 zoals wij die noemen. Daar houden wij ons bezig met ‘active perception’.  Dit is hoe een robot de omgeving om zich heen waarneemt. Om echt een goed beeld van de omgeving te krijgen zal er ook moeten worden gekeken vanuit bijvoorbeeld een ander perspectief, of naar het manipuleren van deze objecten.”
+“Goedemiddag, zou u mij kunnen vertellen waarmee u zich op dit moment bezig houdt binnen het project?”. Theo antwoordt: “Maar natuurlijk, ik ben op dit moment werkzaam bij project 1 zoals wij die noemen. Daar houden wij ons bezig met ‘active perception’.  Dit is hoe een robot de omgeving om zich heen waarneemt. Om echt een goed beeld van de omgeving te krijgen zal er ook moeten worden gekeken vanuit bijvoorbeeld een ander perspectief, of naar het manipuleren van deze objecten.”
 !next
 Je vraagt je af of dit genoeg informatie is voor een robot om al zijn taken te kunnen doen dus je vraagt: “Maar is dit project alleen genoeg om de gehele omgeving van de robot vast te leggen?”. Theo antwoord: “Onze ‘active perception’ werkt nauw samen met project 2, die zich bezig houdt met het ‘wereld model’. Zij gebruiken onze data die verzameld is door sensoren om de wereld om de robot heen te construeren in het geheugen. Hierdoor weet de robot waar en hoe hij zich verhoudt tot een object.”
 !next
-“Wat voor technologie gebruiken jullie dan om dit te doen?” vraag je. “We bouwen verder op nieuwe ‘Deep learning’ technieken en zullen zelf nieuwe architecturen ontwikkelen die bijvoorbeeld 3D reconstructie mogelijk maken, maar ook de geometrische eigenschappen van een 3D object kunnen vinden. Deze zijn weer nodig voor ‘gripping’ en manipulatie van objecten.” antwoordt Theo. 
+“Wat voor technologie gebruiken jullie dan om dit te doen?” vraag je. “We bouwen verder op nieuwe ‘Deep learning’ technieken en zullen zelf nieuwe architecturen ontwikkelen die bijvoorbeeld 3D reconstructie mogelijk maken, maar ook de geometrische eigenschappen van een 3D object kunnen vinden. Deze zijn weer nodig voor ‘gripping’ en manipulatie van objecten.” antwoordt Theo.
 !next
 Je bedankt hem voor zijn tijd en uitleg waarop Theo antwoordt: “Graag gedaan, als je nog niet met Rick hebt gesproken zou ik dat zeker aanraden, hij kan je wat meer vertellen over wat we in het algemeen aan het doen zijn.”
-!optifnotread; Praat met Rick Groenendijk; 1
+!optifnotread; 1; Praat met Rick Groenendijk; 1
 !opt; Verlaat de kamer; welcome; 1
-

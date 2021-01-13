@@ -4,9 +4,9 @@ Optie gekozen: TrimBot2020 door Prof. dr. Theo Gevers, MSc Anil Baslamisli en MS
 Je loopt de TrimBot2020 kamer in en ziet een professor praten met twee PhD studented over het onderzoek.
 Gids: "Dit zijn Professor Theo Gevers, Anil Baslamisili en Hoàng-Ân Lê. Zij werken aan een project om een robot te maken die struiken en andere planten in de tuin kan snoeien. Voelt u zich vrij om met hun te praten over het project."
 Met wie wilt u praten?
-!optifnotread; Theo Gevers; 1
-!optifnotread; Anil Baslamisli; 2
-!optifnotread; Hoàng-Ân Lê; 3
+!optifnotread; 1; Theo Gevers; 1
+!optifnotread; 2; Anil Baslamisli; 2
+!optifnotread; 3; Hoàng-Ân Lê; 3
 !opt; Verlaat de kamer; welcome; 1
 
 !section; 1
@@ -17,8 +17,8 @@ Jij: "Wat is het doel van dit project?"
 Theo: "Het doel van het project is innovatie, maar ook het commercieel goedkoper maken van zulke robots. Verder is er nog een grote lijst met andere doelen die je op onze website kan vinden. Deze doelen gaan voornamelijk over de ontwikkeling van algoritmen. Dit is in grote lijnen wat het project inhoudt. Anil en Hoàng-Ân kunnen je nog meer vertellen als je met hun wilt praten."
 !next
 Jij: "Bedankt voor het beantwoorden van mij vragen."
-!optifnotread; Stel meer vragen aan Anil Baslamisli; 2
-!optifnotread; Stel meer vragen aan Hoàng-Ân Lê; 3
+!optifnotread; 2; Stel meer vragen aan Anil Baslamisli; 2
+!optifnotread; 3; Stel meer vragen aan Hoàng-Ân Lê; 3
 !opt; Verlaat de kamer; welcome; 1
 
 !section; 2
@@ -32,8 +32,8 @@ Jij: "Dus bij de UvA wordt gewerkt aan de software voor de robot zodat deze auto
 Anil: "Ja, dat klopt. Als je meer wilt weten kan je wat vragen stellen aan Theo of aan Hoàng-Ân."
 !next
 Jij: "Bedankt voor uw tijd."
-!optifnotread; Ga naar Theo Gevers; 1
-!optifnotread; Ga naar Hoàng-Ân Lê; 3
+!optifnotread; 1; Ga naar Theo Gevers; 1
+!optifnotread; 3; Ga naar Hoàng-Ân Lê; 3
 !opt; Verlaat de kamer; welcome; 1
 
 !section; 3
@@ -46,7 +46,6 @@ Jij: "Zijn deze resultaten ergens te vinden?"
 Hoàng-Ân: "De resultaten en andere informatie zijn op de website van het project te vinden. Als je nog niet bij Theo en Anil bent langsgeweest kan je hen meer vragen stellen."
 !next
 Jij: "Zal ik doen, bedankt voor de uitleg!"
-!optifnotread; Ga langs Theo Gevers; 1
-!optifnotread; Ga langs Anil Baslamisli; 2
+!optifnotread; 1; Ga langs Theo Gevers; 1
+!optifnotread; 1; Ga langs Anil Baslamisli; 2
 !opt; Verlaat de kamer; welcome; 1
-

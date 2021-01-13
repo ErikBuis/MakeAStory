@@ -11,6 +11,7 @@ Jij: “Oke, erg bedankt voor de rondleiding vandaag!”
 !opt; Einde verhaal; 1
 
 !section; 1
+-------------------------------------------------------------------------------
 Wat betreft onze visie, wij zijn meer positivistisch dan relativistisch, aangezien we vinden dat wat uit onderzoek blijkt ook de waarheid is die niet wordt beïnvloed door sociale groepen. Wetenschappelijke kennis staat vooraan. Ook zijn ze bij deze onderzoeksgroep positivistisch, omdat onderzoekers hier alles zonder ‘bias’ bekijken en heel objectief te werk gaan.
 !next
 Daarnaast zijn we wat betreft inductivisme en deductivisme meer getrokken naar de kant van inductivisme, omdat we meestal eerst verschillende dingen onderzoeken om daar een conclusie uit te trekken dan dat we een hypothese opstellen om die vervolgens te gaan testen. Maar dit verschilt ook een beetje per onderzoek. Wat betreft Computer Vision gaan de onderzoekers meer deductief aan het werk, aangezien ze een theorie/hypothese hebben wat ze implementeren in een robot, die ze vervolgens weer testen.
@@ -19,6 +20,5 @@ Ook zijn we wat meer contextualistisch aangezien ons onderzoek vaak ongemerkt wo
 !next
 Verder zijn we meer voor process dan voor content, omdat we vinden dat het belangrijker is te weten wat algemene onderzoeksmethoden (bijvoorbeeld programmeerparadigma’s) zijn dan om specifieke kennis (bijvoorbeeld Java) te hebben over een vakgebied. Ook bij Computer Vision is dit het geval, omdat ze proberen technieken te ontwikkelen die algemeen toepasbaar zijn.
 !next
-Als het gaat om instrumentalisme tegenover realisme zijn we het met beide niet helemaal eens, al neigen we iets meer naar realisme. Je moet er niet vanuit gaan dat een theorie klopt omdat het goede voorspellingen heeft gemaakt, maar vaak wordt de consensus over een concept wel als de waarheid gezien. Nieuwe technologieën kunnen wellicht andere inzichten geven. Wij denken dat het bij Computer Vision wat meer instrumentalistisch is, aangezien er veel wordt gewerkt met AI en je niet zeker kan weten of en hoe het allemaal werkt, als het maar doet wat het moet doen. 
+Als het gaat om instrumentalisme tegenover realisme zijn we het met beide niet helemaal eens, al neigen we iets meer naar realisme. Je moet er niet vanuit gaan dat een theorie klopt omdat het goede voorspellingen heeft gemaakt, maar vaak wordt de consensus over een concept wel als de waarheid gezien. Nieuwe technologieën kunnen wellicht andere inzichten geven. Wij denken dat het bij Computer Vision wat meer instrumentalistisch is, aangezien er veel wordt gewerkt met AI en je niet zeker kan weten of en hoe het allemaal werkt, als het maar doet wat het moet doen.
 !opt; Bedankt voor het bekijken van ons interactief verhaal!
-

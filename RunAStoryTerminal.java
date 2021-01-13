@@ -25,7 +25,7 @@ public class RunAStoryTerminal {
         System.out.println("\nHave fun reading!!!\n\n\n\n");
         String stripes = "-".repeat((80 - story.getTitle().length()) / 2);
         System.out.println(stripes + story.getTitle().toUpperCase() + stripes + "\n");
-        System.out.println("Author: " + story.getAuthor());
+        System.out.println("Author(s): " + story.getAuthor());
         System.out.println("Programmer: Erik Buis");
         System.out.println("\n");
 
@@ -59,7 +59,7 @@ public class RunAStoryTerminal {
         System.out.println("THE END");
         scanTerminal.nextLine();
         System.out.println("\n\n\n---------------------CREDITS---------------------\n");
-        System.out.println("Author: " + story.getAuthor());
+        System.out.println("Author(s): " + story.getAuthor());
         System.out.println("Programmer: Erik Buis");
         scanTerminal.nextLine();
         System.out.println("\n\n\n");

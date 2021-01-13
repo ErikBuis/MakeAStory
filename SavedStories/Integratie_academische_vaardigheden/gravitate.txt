@@ -3,8 +3,8 @@ Optie gekozen: Gravitate door Hanan ElNaghy en Leo Dorst
 
 Bij het binnenlopen van de kamer zie je allemaal posters met archeologische vondsten. Eén van de onderzoekers zit op een computer in een soort 3D-applicatie te werken.
 Gids: "Doctor Hanan ElNaghy en doctor Leo Dorst vertegenwoordigen de UvA bij het Europese project Gravitate. Stelt u ze hier gerust vragen over."
-!optifnotread; Praat met Hanan ElNaghy; 1
-!optifnotread; Praat met Leo Dorst; 2
+!optifnotread; 1; Praat met Hanan ElNaghy; 1
+!optifnotread; 2; Praat met Leo Dorst; 2
 !opt; Verlaat de kamer; welcome; 1
 
 !section; 1
@@ -16,7 +16,7 @@ Jij: "Dat klinkt zeker niet makkelijk! Wat houdt Mating precies in?"
 Hanan: "Nadat alle data over de objecten is opgeslagen is het belangrijkste doel natuurlijk om de stukjes weer in elkaar te kunnen passen. Hiervoor wordt Mating ontworpen; we associëren eerst meerdere voorwerpen met elkaar door patronen te ontdekken binnen de data, en voegen ze samen als de stukken na verder onderzoek echt bij elkaar blijken te horen. Dit wordt onder andere gedaan met behulp van neurale netwerken, die getraind worden met bestaande data."
 !next
 Jij: "Bedankt voor de uitleg!"
-!optifnotread; Ga door naar Leo Dorst; 2
+!optifnotread; 2; Ga door naar Leo Dorst; 2
 !opt; Verlaat de kamer; welcome; 1
 
 !section; 2
@@ -30,6 +30,5 @@ Leo: "Het innovatieve aspect van het project is dat we een digitaal platform ont
 Jij: "Hoe wordt ervoor gezorgd dat alle data van die vele stukjes overzichtelijk opgeslagen worden?"
 Leo: "Nadat de stukjes zijn geanalyseerd, is er veel data uit die analyse beschikbaar. Omdat elk object verschillende eigenschappen heeft en we objecten met vergelijkbare eigenschappen met elkaar willen combineren, wordt de data opgeslagen in een RDF graph. Een ander algoritme, dat Mating heet, wordt vervolgens gebruikt om de opgeslagen data met elkaar te associëren, zodat stukken die één object vormen weer kunnen worden gecombineerd. Dit doen wij aan de UvA, misschien kan Hanan je daar meer over vertellen."
 Je bedankt Leo voor zijn tijd, en zegt dat je het allemaal erg interessant vond.
-!optifnotread; Ga door naar Hanan ElNaghy; 1
+!optifnotread; 1; Ga door naar Hanan ElNaghy; 1
 !opt; Verlaat de kamer; welcome; 1
-
