@@ -2,3 +2,5 @@
 *
 # Except this file
 !.gitignore
+# Except Integratie_academische_vaardigheden
+!Integratie_academische_vaardigheden
